@@ -15,8 +15,16 @@ stdenv.mkDerivation {
 
   buildInputs = [
     qt6.qtbase
-    kdePackages.libplasma
-  ];
+    qt6.qtmultimedia
+  ] ++ (with kdePackages; [
+    libplasma
+    kdeclarative
+    qt5compat
+    plasma5support
+    kirigami
+    kcoreaddons
+  ]);
+  strictDeps = true;
 
   meta = with lib; {
     description = "Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen.";

@@ -14,6 +14,25 @@ set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modul
 include(ECMFindQmlModule)
 include(ECMQmlModule)
 
+find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
+    Core
+    Gui
+    Quick
+    Multimedia
+    Core5Compat
+)
+find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
+    CoreAddons
+    Declarative
+)
+
+find_package(KF6Kirigami ${KF6_MIN_VERSION} CONFIG)
+set_package_properties(KF6Kirigami PROPERTIES
+    DESCRIPTION "A QtQuick based components set"
+    PURPOSE "Required at runtime the KCM"
+    TYPE RUNTIME
+)
+
 # Get id and version from metadata
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/package/metadata.json METADATA)
 string(JSON PLUGIN_ID GET ${METADATA} KPlugin Id)
