@@ -13,7 +13,7 @@ Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen.
     inputs = {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
   
-      kwin-effects-forceblur = {
+      plasma-smart-video-wallpaper-reborn = {
         url = "github:kostek001/plasma-smart-video-wallpaper-reborn";
         inputs.nixpkgs.follows = "nixpkgs";
       };
