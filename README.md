@@ -2,6 +2,37 @@
 
 Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen.
 
+## Fork: added NixOS Flake
+<details>
+  <summary>NixOS (flakes)</summary>
+  <br>
+  
+  ``flake.nix``:
+  ```nix
+  {
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  
+      kwin-effects-forceblur = {
+        url = "github:kostek001/plasma-smart-video-wallpaper-reborn";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    };
+  }
+  ```
+  
+  ```nix
+  { inputs, pkgs, ... }:
+  
+  {
+    environment.systemPackages = [
+      inputs.plasma-smart-video-wallpaper-reborn.packages.${pkgs.system}.default
+      pkgs.qt6.qtmultimedia # Needed globally
+    ];
+  }
+  ```
+</details>
+
 https://github.com/luisbocanegra/plasma-smart-video-wallpaper-reborn/assets/15076387/45f32fde-a1b4-406f-8aeb-221bb071a6b9
 
 ## Features
