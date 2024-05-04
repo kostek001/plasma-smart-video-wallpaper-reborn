@@ -9,7 +9,10 @@ set(KF6_MIN_VERSION "6.0.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+
+include(ECMFindQmlModule)
+include(ECMQmlModule)
 
 # Get id and version from metadata
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/package/metadata.json METADATA)
