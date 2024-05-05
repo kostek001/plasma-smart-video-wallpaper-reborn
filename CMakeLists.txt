@@ -9,8 +9,10 @@ set(KF6_MIN_VERSION "6.0.0")
 set(KDE_COMPILERSETTINGS_LEVEL "5.85")
 
 find_package(ECM ${KF6_MIN_VERSION} REQUIRED NO_MODULE)
-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
 
+include(KDEInstallDirs)
+include(KDECMakeSettings)
 include(ECMFindQmlModule)
 include(ECMQmlModule)
 
@@ -29,9 +31,11 @@ find_package(KF6 ${KF6_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF6Kirigami ${KF6_MIN_VERSION} CONFIG)
 set_package_properties(KF6Kirigami PROPERTIES
     DESCRIPTION "A QtQuick based components set"
-    PURPOSE "Required at runtime the KCM"
+    PURPOSE "Required"
     TYPE RUNTIME
 )
+
+include_directories(${Qt6Quick_INCLUDE_DIRS} ${Qt6Multimedia_INCLUDE_DIRS} ${Qt6Core5Compat_INCLUDE_DIRS})
 
 # Get id and version from metadata
 file(READ ${CMAKE_CURRENT_SOURCE_DIR}/package/metadata.json METADATA)
