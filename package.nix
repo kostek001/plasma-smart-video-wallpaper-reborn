@@ -13,7 +13,7 @@ stdenv.mkDerivation {
 
   nativeBuildInputs = [ cmake qt6.wrapQtAppsHook kdePackages.extra-cmake-modules ];
 
-  buildInputs = [
+  propagatedBuildInputs = [
     qt6.qtbase
     qt6.qtmultimedia
   ] ++ (with kdePackages; [
