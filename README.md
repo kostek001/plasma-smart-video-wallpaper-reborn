@@ -2,7 +2,9 @@
 
 Plasma 6 Wallpaper plugin to play videos on your Desktop/Lock Screen.
 
-## Fork: added NixOS Flake
+# ⚠️ No Nix Flake updates, moved to [kostek001/nixos-pkgs](https://github.com/kostek001/nixos-pkgs)
+
+## Fork: added Nix Flake
 <details>
   <summary>NixOS (flakes)</summary>
   <br>
